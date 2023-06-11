@@ -15,7 +15,18 @@ const MenuController = {
     },
     getOne: async (req, res) => {
         try {
+
             const data = await Menu.findById(req.params.id)
+            // res.status(200).json(req.params.id)
+        }
+
+        catch (error) {
+            res.status(400).json({message: error.message})
+        }
+    },
+    getMenuDetail: async (req, res) => {
+        try {
+            const data = await Menu.findOne({menu_title: req.params.title})
             res.status(200).json(data)
         }
 
@@ -61,7 +72,9 @@ const MenuController = {
         catch (error) {
             res.status(400).json({message: error.message})
         }
-    }
+    },
+
+
 }
 
 export default MenuController
