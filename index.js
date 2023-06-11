@@ -28,7 +28,15 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 app.use(express.json())
+// app.use(function(req, res, next) {
+//     res.header(
+//       "Access-Control-Allow-Headers",
+//       "x-access-token, Origin, Content-Type, Accept"
+//     );
+//     next();
+//   });
 app.use('/api', router)
+
 
 app.listen(3030, () => {
     console.log("Server is running on port 3030")
