@@ -1,11 +1,23 @@
 import mongoose from "mongoose";
 
 const dataSchema = new mongoose.Schema({
-    title: {
+    full_title: {
         required: true,
         type: String
     },
-    route: {
+    menu_title: {
+        type: String,
+        required: true
+    },
+    description: {
+        required: true,
+        type: String
+    },
+    icon: {
+        required: true,
+        type: String
+    },
+    url: {
         required: true,
         type: String
     }
