@@ -11,12 +11,13 @@ const AuthController = {
             username: req.body.username,
             email: req.body.email,
             password: bcrypt.hashSync("123", 8),
-            role: await Role.find({ name: { $in: req.body.role } }).then(
-                (roles) => {
-                    return roles.map((role) => role._id)
-                }
-            ),
-            
+            // role: await Role.find({ name: { $in: req.body.role } }).then(
+            //     (roles) => {
+            //         return roles.map((role) => role._id)
+            //     }
+            // ),
+            role: req.body.role,
+            name: req.body.fullname
         })
 
         try {

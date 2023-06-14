@@ -14,12 +14,12 @@ const dataSchema = new mongoose.Schema({
         type: String
     },
     icon: {
-        required: true,
-        type: String
+        type: String,
+        default: "fa_cloud"
     },
     url: {
+        type: String,
         required: true,
-        type: String
     }
 })
 

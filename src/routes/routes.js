@@ -17,6 +17,7 @@ router.delete('/menu/:id', Controller.Menu.delete)
 
 //User Route
 router.get('/user', Controller.User.getAll)
+router.get('/user/role', Controller.User.getRole)
 router.put('/user/:id', Controller.User.update)
 router.get('/user/:id', Controller.User.getOne)
 router.delete('/user/:id', Controller.User.delete)
@@ -40,6 +41,9 @@ router.get('/article', Controller.Article.getAll)
 router.post('/article', Controller.Article.post)
 router.put('/article/:id', Controller.Article.update)
 router.get('/article/:id', Controller.Article.getOne)
+
+//category
+
 
 //AUTH Route
 router.post('/auth/createUser', verifyCreateUser.checkDuplicateUsernameOrEmail, Controller.Auth.signup)

@@ -15,9 +15,8 @@ const MenuController = {
     },
     getOne: async (req, res) => {
         try {
-
             const data = await Menu.findById(req.params.id)
-            // res.status(200).json(req.params.id)
+            res.status(200).json(data)
         }
 
         catch (error) {
@@ -36,8 +35,10 @@ const MenuController = {
     },
     post: async (req, res) => {
         const data = new Menu({
-            title: req.body.title,
-            route: req.body.route
+            full_title: req.body.full_title,
+            menu_title: req.body.menu_title,
+            description: req.body.description,
+            url: req.body.menu_title
         })
 
         try {
@@ -52,8 +53,10 @@ const MenuController = {
     update: async (req, res) => {
         try {
             const data = await Menu.findById(req.params.id)
-            data.title = req.body.title
-            data.route = req.body.route
+            data.full_title = req.body.full_title
+            data.menu_title = req.body.menu_title
+            data.description = req.body.description
+            
             const newData = await data.save()
             res.status(200).json(newData)
         }
@@ -64,9 +67,8 @@ const MenuController = {
     },
     delete: async (req, res) => {
         try {
-            const data = await Menu.findById(req.params.id)
-            const newData = await data.remove()
-            res.status(200).json(newData)
+            await Menu.deleteOne({_id: req.params.id})
+            res.status(200).json({message: "delete success"})
         }
 
         catch (error) {
