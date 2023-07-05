@@ -25,6 +25,6 @@ const dataSchema = new mongoose.Schema({
     },
 })
 
-const ArticleModel = mongoose.model('Article', dataSchema)
+const ArticleScrapeModel = mongoose.model('ArticleScrape', dataSchema)
 
-export default ArticleModel
+export default ArticleScrapeModel

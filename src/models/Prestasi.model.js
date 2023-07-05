@@ -6,29 +6,38 @@ var dataSchema = new mongoose.Schema({
         required:true,
         // unique:true,
     },
-    email:{
+    nrp:{
         type:String,
         // required:true,
         // unique:true,
     },
-    picture: {
+    prodi: {
         type: String,
     },
     createdAt: {
         type: Date,
         default: Date.now
     },
-    nip: {
+    prestasi: {
         type: String,
         // required: true,
     },
-    research_group: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "ResearchGroup"
-    }
+    jenis: {
+        type: String,
+        // required: true,
+    },
+    penyelenggara: {
+        type: String,
+        // required: true,
+    },
+    tingkat: {
+        type: String,
+        // required: true,
+    },
+
 });
 
 
-const DosenModel = mongoose.model('Dosen', dataSchema)
+const PrestasiModel = mongoose.model('Prestasi', dataSchema)
 
-export default DosenModel
+export default PrestasiModel

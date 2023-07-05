@@ -1,11 +1,12 @@
 import Models from "../models/index.js";
-const Dosen = Models.Dosen
+
 const Lab = Models.Lab
+const Dosen = Models.Dosen
 
 const LabController = {
     getAll: async (req, res) => {
         try {
-            const data = await Lab.find()
+            const data = await Lab.find().populate('leader')
             res.status(200).json(data)
         }
 
@@ -16,29 +17,8 @@ const LabController = {
     getOne: async (req, res) => {
         try {
             const data = await Lab.findById(req.params.id).populate('leader')
-            const response = {
-                _id: data._id,
-                name: data.name,
-                description: data.description,
-                members: [],
-                leader: data.leader.name
-            }
             
-            await Dosen.find({lab: data._id}).then(
-                (dosen) => {
-                    // return dosen.map((dosen) => dosen._id)
-                    dosen.map((dosen) => {
-                        if(dosen.name != data.leader.name) {
-                            response.members.push(dosen.name)
-                        }
-                    })
-                }
-            ).catch(
-                (error) => {
-            res.status(400).json({ message: error.message })
-                }
-            )
-            res.status(200).json(response)
+            res.status(200).json(data)
         }
         catch (error) {
             res.status(400).json({ message: error.message })
@@ -48,7 +28,7 @@ const LabController = {
         const data = new Lab({
             name: req.body.name,
             description: req.body.description,
-            leader: await Dosen.find({ name: { $in: req.body.dosen } }).then((dosen) => {
+            leader: await Dosen.find({ _id: { $in: req.body.leader } }).then((dosen) => {
                 return dosen.map((dosen) => dosen._id)
             }),
         })

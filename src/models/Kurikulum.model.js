@@ -3,20 +3,43 @@ import mongoose from "mongoose";
 const dataSchema = new mongoose.Schema({
     kode: {
         type: String,
-        unique: true,
         required: true
     },
-    course: {
+    mata_kuliah: {
         type: String,
         required: true,
     },
-    sks: {
+    semester: {
         type: Number,
         required: true
     },
-    hour: {
+    jam_teori: {
         type: Number,
         required: true
+    },
+    jam_praktikum: {
+        type: Number,
+        required: true
+    },
+    kredit_teori: {
+        type: Number,
+        required: true
+    },
+    kredit_praktikum: {
+        type: Number,
+        required: true
+    },
+    jam: {
+        type: Number,
+        required: true
+    },
+    kredit: {
+        type: Number,
+        required: true
+    },
+    prodi: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Prodi'
     }
 })
 

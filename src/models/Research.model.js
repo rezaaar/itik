@@ -8,18 +8,19 @@ const dataSchema = new mongoose.Schema({
     file: {
         type: String
     },
-    lab: {
+    year: {
+        type: String
+    },
+    scopussource : {
+        type : String
+    },
+    research_group: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Lab"
+        ref: "ResearchGroup"
     },
     createdAt: {
         type: Date,
         default: Date.now
-    },
-    author: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Dosen",
-        required: true
     },
     abstract: {
         type: String
@@ -29,6 +30,7 @@ const dataSchema = new mongoose.Schema({
     }
 
 })
+
 const ResearchModel = mongoose.model("Research", dataSchema);
 
-export default ResearchModel;
+export default ResearchModel

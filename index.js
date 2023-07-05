@@ -3,6 +3,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
+
 dotenv.config()
 
 const mongoString = process.env.DB_URL
@@ -23,7 +24,9 @@ import router from "./src/routes/routes.js";
 const app = express()
 
 const corsOptions = {
-    origin: "*"
+    origin: "*",
+    credential: true,
+    optionSuccessStatus:200
 }
 
 app.use(cors(corsOptions))

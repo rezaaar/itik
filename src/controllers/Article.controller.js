@@ -2,16 +2,20 @@ import Models from "../models/index.js";
 
 const User = Models.User
 const Article = Models.Article;
+const ArticleScrape = Models.ArticleScrape
 
 const ArticleController = {
     getAll: async (req, res) => {
         try {
-            const data = await Article.find().populate("publisher", "name");
+            const dataArticle = await Article.find().populate("publisher", "name")
+            const dataArticleScrape = await ArticleScrape.find()
+            const data = dataArticle.concat(dataArticleScrape)
             res.status(200).json(data);
         } catch (error) {
             res.status(400).json({ message: error.message });
         }
     },
+
     getOne: async (req, res) => {
         try {
             const data = await Article.findById(req.params.id);
@@ -20,6 +24,17 @@ const ArticleController = {
             res.status(400).json({ message: error.message });
         }
     },
+
+    getSomeArticle: async (req, res) => {
+        try {
+            const count = req.params.count
+            const data = await Article.find().limit(count)
+            res.status(200).json(data)
+        } catch (error) {
+            res.status(400).json({message: error})
+        }
+    },
+
     post: async (req, res) => {
         const data = new Article({
             title: req.body.title,

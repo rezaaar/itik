@@ -8,6 +8,10 @@ import KurikulumModel from "./Kurikulum.model.js"
 import LabModel from "./Lab.model.js"
 import ProdiModel from "./Prodi.model.js"
 import ResearchModel from "./Research.model.js"
+import ResearchGroupModel from "./ResearchGroup.model.js"
+import PrestasiModel from "./Prestasi.model.js"
+import ArticleScrapeModel from "./ArticleScrape.js"
+import ImageModel from "./Image.model.js"
 
 
 
@@ -21,7 +25,11 @@ const Models = {
     Kurikulum: KurikulumModel,
     Lab: LabModel,
     Prodi: ProdiModel,
-    Research: ResearchModel
+    Research: ResearchModel,
+    ResearchGroup: ResearchGroupModel,
+    Prestasi: PrestasiModel,
+    ArticleScrape: ArticleScrapeModel,
+    Image: ImageModel
 }
 
 export default Models
