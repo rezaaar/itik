@@ -7,6 +7,12 @@ import upload from "../utils/upload.js";
  
 const router = express.Router()
 
+//Image Route
+router.post('/upload-drive', Controller.Image.uploadDrive)
+
+router.post('/upload-base64', Controller.Image.uploadBase64)
+router.get('/upload-base64', Controller.Image.getImageBase64)
+
 //Menu Route
 router.get('/menu', Controller.Menu.getAll)
 router.post('/menu', Controller.Menu.post)

@@ -13,6 +13,13 @@ const dataSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Dosen'
     },
+    image: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Image'
+    },
+    course: [{
+        type: String
+    }]
 })
 const LabModel = mongoose.model("Lab", dataSchema);
 

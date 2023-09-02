@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import fileUpload from 'express-fileupload';
 
 
 dotenv.config()
@@ -30,6 +31,7 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions))
+app.use(fileUpload())
 app.use(express.json())
 // app.use(function(req, res, next) {
 //     res.header(

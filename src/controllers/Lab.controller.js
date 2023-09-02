@@ -6,7 +6,7 @@ const Dosen = Models.Dosen
 const LabController = {
     getAll: async (req, res) => {
         try {
-            const data = await Lab.find().populate('leader')
+            const data = await Lab.find().populate('leader').populate('image')
             res.status(200).json(data)
         }
 
@@ -16,7 +16,7 @@ const LabController = {
     },
     getOne: async (req, res) => {
         try {
-            const data = await Lab.findById(req.params.id).populate('leader')
+            const data = await Lab.findById(req.params.id).populate('leader').populate('image')
             
             res.status(200).json(data)
         }

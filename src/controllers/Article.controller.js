@@ -2,15 +2,16 @@ import Models from "../models/index.js";
 
 const User = Models.User
 const Article = Models.Article;
-const ArticleScrape = Models.ArticleScrape
+
 
 const ArticleController = {
     getAll: async (req, res) => {
         try {
-            const dataArticle = await Article.find().populate("publisher", "name")
-            const dataArticleScrape = await ArticleScrape.find()
-            const data = dataArticle.concat(dataArticleScrape)
-            res.status(200).json(data);
+            const {limit, page} = req.query
+            const total = await Article.count()
+            const totalPage = Math.ceil(total/limit)
+            const data = await Article.find().skip(page? (page-1)*10 : 0).limit(limit? limit: 10)
+            res.status(200).json({data: data, currentPage: +page, total: total, totalPage: totalPage})
         } catch (error) {
             res.status(400).json({ message: error.message });
         }

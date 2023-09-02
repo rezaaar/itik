@@ -10,6 +10,7 @@ import DosenController from "./Dosen.controller.js"
 import PrestasiController from "./Prestasi.controller.js"
 import ResearchController from "./research.controller.js"
 import KurikulumController from "./Kurikulum.controller.js"
+import ImageController from "./Image.controller.js"
 
 import ScrapingArticleController from "./ScrapingArticle.controller.js"
 
@@ -27,7 +28,8 @@ const Controller = {
     Prestasi: PrestasiController,
     Research: ResearchController,
     ScrapingArticle: ScrapingArticleController,
-    Kurikulum: KurikulumController
+    Kurikulum: KurikulumController,
+    Image: ImageController
 }
 
 export default Controller

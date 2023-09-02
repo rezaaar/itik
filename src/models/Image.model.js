@@ -4,9 +4,11 @@ const dataSchema = new mongoose.Schema({
     name: {
         type: String,
     },
-    image: {
-        data: Buffer,
-        contentType: String
+    image_id: {
+        type: String
+    },
+    mimeType: {
+        type: String
     }
     
 })

@@ -5,6 +5,13 @@ const dataSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Lab'
     },
+
+    image: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Image'
+    },
+
+    
     
 })
 const LabDetailModel = mongoose.model("LabDetail", dataSchema);
